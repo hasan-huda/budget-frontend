@@ -53,6 +53,18 @@ const Goals = (props) => {
         console.log(err);
       });
   };
+  
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this goal?")) {
+      axios
+        .delete(`${URL}/api/goals/goal/${id}`)
+        .then(() => {
+          console.log("Goal deleted successfully.");
+          setGoals(goals.filter((g) => g.id !== id));
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <div className="mt-24 ml-24">
@@ -104,7 +116,10 @@ const Goals = (props) => {
                   >
                     {goal.paused ? "Paused" : "Pause"}
                   </button>
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => handleDelete(goal.id)}
+                  >
                     Delete
                   </button>
                 </td>

@@ -20,6 +20,7 @@ import Goals from "./components/Goals";
 import EditTransaction from "./components/EditTransaction";
 import EditCategory from "./components/EditCategory";
 import ResetAccount from "./components/ResetAccount";
+import EditGoal from "./components/EditGoal";
 
 export const URL = process.env.REACT_APP_SERVER_URL;
 
@@ -86,9 +87,9 @@ function App() {
           }
         ></Route>
         <Route path="/categories/:id" element={<EditCategory />}></Route>
+        <Route path="/goals/:id" element={<EditGoal />}></Route>
         <Route path="/transactions/:id" element={<EditTransaction />}></Route>
         <Route path="/expenses/:id"></Route>
-
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>
     </div>
